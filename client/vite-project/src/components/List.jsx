@@ -9,7 +9,7 @@ const List = () => {
     useEffect(() => {
       dispatch(getUsers());
        }, [])
-       console.log(users)
+      //  console.log(users)
   return (
     <div>
         {
@@ -18,7 +18,6 @@ const List = () => {
             
             
                 React.Children.toArray(users.map(el=><CardUser user={el}/>))
-            
           
         }
     </div>

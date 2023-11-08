@@ -4,8 +4,14 @@ require("dotenv").config({ path: "./config/.env" });
 const connectDB = require("./config/connectDB");
 const User = require("./model/User");
 const app=express();
+const cors=require("cors");
 app.use(express.json());
 connectDB()
+app.use(cors({
+  Origin: 'http://localhost:5173/', // Allow requests from this origin.
+}));
+
+
 app.post("/add",async(req,res)=>{
     const {fullName,email,phone,age}=req.body;
     try {
@@ -56,6 +62,11 @@ res.send("user deleted");
 
 
 const PORT=process.env.PORT||4000;
+
+
 app.listen(PORT,(err)=>err
 ?console.log(err)
 :console.log(`server is successfuly runing on PORT ${PORT}`));
+
+
+
