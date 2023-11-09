@@ -1,13 +1,30 @@
 import React from 'react'
-import Card from 'react-bootstrap/Card';
+import { Link, useParams} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { getUser, getUsers } from '../redux/actions';
 
-const info = () => {
+
+const Info = ({items}) => {
+  const { _id } = useParams();
+  const item = items.find((el) => el._id === _id);
+
+  const dispatch=useDispatch();
+
+  
+   dispatch(getUser());
+    
   
   
   return (
     <div>
-       
-         <Card style={{ width: '18rem' }}>
+      <p>{item.fullName}</p>
+      <p>{item.email}</p>
+      <p> {item.phone}</p>
+      <p> {item.age}</p>
+      <Link to="/">
+       <button>retour</button>
+       </Link>
+         {/* <Card style={{ width: '18rem' }}>
      
      <Card.Body>
       
@@ -21,10 +38,13 @@ const info = () => {
        <Card.Text>
          {user.age}
        </Card.Text>
+       <Link to="/">
+       <button>retour</button>
+       </Link>
        </Card.Body>
-    </Card>
+    </Card> */}
     </div>
   )
 }
 
-export default info
+export default Info

@@ -1,9 +1,10 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
-import { delUser, getUser, getUsers } from '../redux/actions';
+import { delUser, getUser, getUsers} from '../redux/actions';
 import { useDispatch } from 'react-redux';
 import EditUser from './EditUser';
 import Button from 'react-bootstrap/esm/Button';
+import { Link } from 'react-router-dom';
 
 const CardUser = ({user}) => {
   console.log(user)
@@ -15,8 +16,10 @@ const CardUser = ({user}) => {
   }
   const getOne=async()=>{
 
-   await dispatch(getUser(user._id))
-  }
+    await dispatch(getUser(user._id))
+
+   }
+ 
   return (
     <div>
         <Card style={{ width: '18rem' }}>
@@ -35,7 +38,9 @@ const CardUser = ({user}) => {
         </Card.Text>
       <Button variant="danger" type='submit' onClick={deleteOne}>delete</Button>
       <EditUser user={user}/>
-    <Button onClick={getOne}>Info</Button>
+      <Link to={`/info/${user._id}`}>
+    <Button type='submit' onClick={getOne}>Info</Button>
+      </Link>
       </Card.Body>
     </Card>
     </div>
