@@ -56,7 +56,7 @@ export const editUser=(editedUser)=>async(dispatch)=>{
 }
 export const getUser=(_id)=>async(dispatch)=>{
     try {
-        const res=await axios.get(`/get/${_id}`);
+        const res=await axios.get(`/get-id/${_id}`);
         dispatch({
             type:INFO,
             payload:res.data,

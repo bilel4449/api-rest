@@ -18,11 +18,14 @@ function App() {
   
   return (
     <>
-    <AddUser/>
+              <AddUser/>
+
     <Router>
         <Routes>
           <Route path="/Info/:_id" element={<Info items={users}/>}/>
           <Route path="/" element={<List />}/>
+          {/* <Route path="/" element={<AddUser/>}/> */}
+
           </Routes>
       </Router>
         
